@@ -1,4 +1,5 @@
 from os import walk
+from random import randint
 from .config import *
 
 class Library:
@@ -29,8 +30,7 @@ class Library:
     def load_song(self):
         while True:
             try:
-                song = library[randint(0, len(library)-1)]
-                mixer.music.load(song['path'])
+                song = self.songs[randint(0, len(self.songs)-1)]
                 return song['path'], song['title']
             except:
                 continue

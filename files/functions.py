@@ -1,6 +1,4 @@
-from os import walk
 import re
-from random import randint
 import inquirer
 from pygame import mixer
 from .config import *
@@ -43,36 +41,6 @@ def show_choices(library, guess):
                 ),
     ]
     return inquirer.prompt(questions)["title"]
-
-# DATA LOAD ======================================================
-
-def load_library():
-    song_files = []
-    for root, dirs, files in walk(FILES_PATH):
-        if root.split('/')[-1] in SKIP_FOLDERS:
-            continue
-        for name in files:
-            try:
-                if name.endswith(FILE_FORMATS):
-                    song_files.append({
-                        'path': f"{root}/{name}",
-                        'title': "".join(name.split('.')[:-1])
-                    })
-            except Exception as e:
-                continue
-    if len(song_files) == 0:
-        print("No music found at {}".format(FILES_PATH))
-        exit()
-    return song_files
-
-def load_song(library):
-    while True:
-        try:
-            song = library[randint(0, len(library)-1)]
-            mixer.music.load(song['path'])
-            return song['path'], song['title']
-        except:
-            continue
 
 # STATS ############################################
 
