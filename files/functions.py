@@ -1,6 +1,5 @@
 import re
 import inquirer
-from pygame import mixer
 from .config import *
 import numpy as np
 import json
