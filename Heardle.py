@@ -58,15 +58,11 @@ def main():
     # Load/Initialize statistics
     stats = funcs.load_stats(conf.STATS_PATH)
 
-    # Run until KeyboardInterrupt exception is received or game is ended
+    # Run until game is ended
     while True:
-        try:
-            if not start(mixer, library, stats):
-                print('\nAccuracy: {}\n'.format(funcs.calculate_accuracy(stats)))
-            else:
-                funcs.save_stats(conf.STATS_PATH, stats)
-                break
-        except KeyboardInterrupt:
+        if not start(mixer, library, stats):
+            print('\nAccuracy: {}\n'.format(funcs.calculate_accuracy(stats)))
+        else:
             # Save statistics
             funcs.save_stats(conf.STATS_PATH, stats)
             break
