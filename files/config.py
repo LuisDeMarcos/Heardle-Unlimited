@@ -4,8 +4,8 @@ BASE_PATH = Path(__file__).parent
 
 # Path to the music files
 FILES_PATH = (BASE_PATH / "../music/").resolve()
-#FILES_PATH = "/Volumes/Luis/Heardle/music/"
 
+# Path to statistics file
 STATS_PATH = (BASE_PATH / "./stats.json").resolve()
 
 # Audio file formats allowed
